@@ -1,0 +1,664 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Marca que hay JS antes de pintar (evita parpadeo de las animaciones de aparición) -->
+  <script>document.documentElement.classList.add('js')</script>
+
+  <!-- =====================================================================
+       SEO LOCAL — sustituye [CIUDAD] y [NOMBRE FOTÓGRAFA] (ver README)
+       ===================================================================== -->
+  <title>Fotógrafa de recién nacidos en [CIUDAD] | [NOMBRE FOTÓGRAFA]</title>
+  <meta name="description" content="Fotógrafa de recién nacidos en [CIUDAD]. Sesiones newborn con disfraces de animalitos, embarazo, familia y smash cake. Estudio seguro y climatizado. Plazas limitadas: reserva durante el embarazo.">
+  <link rel="canonical" href="https://[TU-DOMINIO]/">
+  <meta name="theme-color" content="#FFFBF6">
+
+  <!-- Open Graph (cómo se ve el enlace al compartirlo en WhatsApp, Instagram, Facebook…) -->
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_ES">
+  <meta property="og:site_name" content="[NOMBRE FOTÓGRAFA]">
+  <meta property="og:title" content="Fotógrafa de recién nacidos en [CIUDAD] | [NOMBRE FOTÓGRAFA]">
+  <meta property="og:description" content="Sesiones newborn con disfraces de animalitos en un estudio seguro y cálido. Reserva durante el embarazo: plazas limitadas al mes.">
+  <meta property="og:url" content="https://[TU-DOMINIO]/">
+  <meta property="og:image" content="https://[TU-DOMINIO]/assets/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+
+  <!-- Tipografías: Fraunces (titulares, versión "soft") + Nunito (texto) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:wght,SOFT@500..600,100&family=Nunito:wght@400;700&display=swap">
+
+  <!-- Three.js se carga más tarde y solo si hace falta; aquí solo resolvemos el DNS -->
+  <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+
+  <link rel="stylesheet" href="css/styles.css">
+
+  <!-- Datos estructurados para Google (negocio local).
+       Nota: schema.org no tiene un tipo "Photographer", así que usamos LocalBusiness. -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "[NOMBRE FOTÓGRAFA] · Fotografía newborn",
+    "description": "Fotógrafa de recién nacidos en [CIUDAD]: sesiones newborn con disfraces de animalitos, embarazo, familia y primer año.",
+    "url": "https://[TU-DOMINIO]/",
+    "image": "https://[TU-DOMINIO]/assets/og-image.png",
+    "email": "[EMAIL]",
+    "telephone": "[TELÉFONO]",
+    "priceRange": "€€",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "[DIRECCIÓN DEL ESTUDIO]",
+      "addressLocality": "[CIUDAD]",
+      "postalCode": "[CÓDIGO POSTAL]",
+      "addressCountry": "ES"
+    },
+    "areaServed": "[CIUDAD]",
+    "knowsAbout": ["Fotografía de recién nacidos", "Fotografía newborn", "Fotografía de embarazo", "Fotografía de familia", "Smash cake"],
+    "sameAs": ["https://www.instagram.com/[INSTAGRAM]"]
+  }
+  </script>
+
+  <!-- Mapa de módulos: versión de Three.js FIJADA (no cambiar sin probar) -->
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.min.js"
+    }
+  }
+  </script>
+  <script type="module" src="js/main.js"></script>
+</head>
+
+<body>
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+
+  <!-- =====================================================================
+       CABECERA FIJA
+       ===================================================================== -->
+  <header class="site-header" data-header>
+    <div class="container header-inner">
+      <a class="logo" href="#inicio" aria-label="Inicio — [NOMBRE FOTÓGRAFA]">
+        <img src="assets/favicon.svg" alt="" width="36" height="36">
+        <span class="logo-text" data-config="nombre">[NOMBRE FOTÓGRAFA]</span>
+      </a>
+
+      <nav class="main-nav" aria-label="Principal">
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="menu" data-nav-toggle>
+          <svg aria-hidden="true" width="24" height="24"><use href="assets/illustrations/iconos.svg#ui-menu"/></svg>
+          <span class="visually-hidden">Abrir menú</span>
+        </button>
+        <ul class="nav-list" id="menu" data-nav-list>
+          <li><a href="#sobre-mi">Sobre mí</a></li>
+          <li><a href="#portfolio">Portfolio</a></li>
+          <li><a href="#sesiones">Sesiones</a></li>
+          <li><a href="#como-funciona">Cómo funciona</a></li>
+          <li><a href="#seguridad">Seguridad</a></li>
+          <li><a href="#faq">Preguntas</a></li>
+        </ul>
+      </nav>
+
+      <a class="btn btn--primary btn--sm header-cta" href="#reserva">Reservar</a>
+    </div>
+  </header>
+
+  <main id="contenido">
+
+    <!-- ===================================================================
+         1. HERO
+         =================================================================== -->
+    <section class="hero" id="inicio" aria-labelledby="hero-title">
+      <div class="container hero-inner">
+        <div class="hero-copy">
+          <p class="eyebrow">
+            <svg aria-hidden="true" width="18" height="18"><use href="assets/illustrations/iconos.svg#huella"/></svg>
+            Fotografía newborn en <span data-config="ciudad">[CIUDAD]</span>
+          </p>
+          <h1 id="hero-title" class="hero-title">Sus primeros días, <em>tiernos para siempre</em></h1>
+          <p class="hero-sub">
+            Sesiones de recién nacido con disfraces de animalitos —ositos, conejitos, zorritos, ovejitas—
+            en un estudio cálido y seguro, a su ritmo.
+          </p>
+          <p class="hero-notice">
+            <svg aria-hidden="true" width="20" height="20"><use href="assets/illustrations/iconos.svg#ui-reloj"/></svg>
+            <span>Se reserva <strong>durante el embarazo</strong>: solo <strong data-config="plazasMes">[N]</strong> sesiones de recién nacido al mes.</span>
+          </p>
+          <div class="hero-ctas">
+            <a class="btn btn--primary btn--lg" href="#reserva">Reserva tu sesión</a>
+            <a class="btn btn--ghost btn--lg" href="#portfolio">Ver portfolio</a>
+          </div>
+        </div>
+
+        <!-- Escena 3D: se ve la ilustración SVG hasta que (y si) WebGL carga -->
+        <div class="hero-scene" data-hero-scene>
+          <img class="hero-fallback" src="assets/illustrations/hero-fallback.svg" width="800" height="640"
+               alt="Ilustración de un osito, un conejito, un zorrito y una ovejita durmiendo sobre una nube" fetchpriority="high">
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         2. SOBRE MÍ
+         =================================================================== -->
+    <section class="section section--mint" id="sobre-mi" aria-labelledby="sobre-mi-title">
+      <div class="container about">
+        <figure class="about-photo reveal">
+          <picture>
+            <!-- Cuando tengas la foto real: <source srcset="assets/photos/sobre-mi.webp" type="image/webp"> -->
+            <img src="assets/photos/sobre-mi.svg" width="800" height="1000" loading="lazy" decoding="async"
+                 alt="Retrato de [NOMBRE FOTÓGRAFA] en su estudio con un bebé dormido en brazos">
+          </picture>
+          <img class="about-deco" src="assets/illustrations/estrellas.svg" alt="" width="120" height="80" loading="lazy">
+        </figure>
+
+        <div class="about-text reveal">
+          <h2 class="section-title ears ears--oso" id="sobre-mi-title">Hola, soy <span data-config="nombre">[NOMBRE FOTÓGRAFA]</span></h2>
+          <!-- PLACEHOLDER: sustituir por tu historia real -->
+          <p>
+            Hace años que fotografío los primeros días de vida de los bebés de <span data-config="ciudad">[CIUDAD]</span>.
+            Me enamoré de esta etapa con el nacimiento de [mi primer hijo/sobrina…] y desde entonces mi estudio
+            es un pequeño nido donde las familias pueden relajarse mientras su bebé duerme.
+          </p>
+          <p>
+            Mis sesiones son tranquilas, sin prisas y pensadas al detalle: los disfraces de animalitos los tejen
+            artesanas, todo se lava y desinfecta tras cada sesión, y el ritmo lo marca siempre tu bebé.
+          </p>
+          <ul class="checklist">
+            <li><svg aria-hidden="true" width="20" height="20"><use href="assets/illustrations/iconos.svg#ui-check"/></svg> Formación específica en seguridad y posado newborn [CURSO/ESCUELA]</li>
+            <li><svg aria-hidden="true" width="20" height="20"><use href="assets/illustrations/iconos.svg#ui-check"/></svg> Curso de primeros auxilios pediátricos [AÑO]</li>
+            <li><svg aria-hidden="true" width="20" height="20"><use href="assets/illustrations/iconos.svg#ui-check"/></svg> Más de [N] familias fotografiadas</li>
+          </ul>
+          <a class="btn btn--primary" href="#reserva">Quiero mi sesión</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         3. PORTFOLIO (las fotos se cargan desde js/config.js)
+         =================================================================== -->
+    <section class="section" id="portfolio" aria-labelledby="portfolio-title">
+      <div class="container">
+        <header class="section-head reveal">
+          <h2 class="section-title ears ears--conejo" id="portfolio-title">Portfolio</h2>
+          <p class="section-lead">Un pequeño zoo de recién nacidos dormiditos… y también barriguitas, familias y primeros cumpleaños.</p>
+        </header>
+
+        <div class="filters reveal" role="group" aria-label="Filtrar fotos por tipo de sesión">
+          <button type="button" class="chip" data-filter="todos" aria-pressed="true">Todos</button>
+          <button type="button" class="chip" data-filter="recien-nacido" aria-pressed="false">Recién nacido</button>
+          <button type="button" class="chip" data-filter="embarazo" aria-pressed="false">Embarazo</button>
+          <button type="button" class="chip" data-filter="familia" aria-pressed="false">Familia</button>
+          <button type="button" class="chip" data-filter="primer-anio" aria-pressed="false">Primer año</button>
+        </div>
+
+        <div class="animal-tags" role="group" aria-label="Filtrar recién nacidos por animalito" data-animal-tags hidden>
+          <button type="button" class="chip chip--small" data-animal="todos" aria-pressed="true">Todos los animalitos</button>
+          <button type="button" class="chip chip--small" data-animal="osito" aria-pressed="false">Osito</button>
+          <button type="button" class="chip chip--small" data-animal="conejito" aria-pressed="false">Conejito</button>
+          <button type="button" class="chip chip--small" data-animal="zorrito" aria-pressed="false">Zorrito</button>
+          <button type="button" class="chip chip--small" data-animal="ovejita" aria-pressed="false">Ovejita</button>
+          <button type="button" class="chip chip--small" data-animal="pollito" aria-pressed="false">Pollito</button>
+        </div>
+
+        <p class="visually-hidden" aria-live="polite" data-gallery-status></p>
+
+        <ul class="gallery" data-gallery>
+          <!-- main.js genera aquí las fotos a partir de SITE.portfolio -->
+        </ul>
+        <noscript><p class="noscript">Activa JavaScript para ver el portfolio o visítame en Instagram.</p></noscript>
+
+        <div class="gallery-cta reveal">
+          <img src="assets/illustrations/separador-huellas.svg" alt="" width="240" height="40" loading="lazy">
+          <p>¿Te imaginas a tu bebé así de dormidito?</p>
+          <a class="btn btn--primary btn--lg" href="#reserva">Reserva tu sesión</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Lightbox accesible (diálogo nativo) -->
+    <dialog class="lightbox" data-lightbox aria-label="Visor de fotos">
+      <div class="lightbox-inner">
+        <button type="button" class="lightbox-btn lightbox-close" data-lb-close aria-label="Cerrar visor">
+          <svg aria-hidden="true" width="24" height="24"><use href="assets/illustrations/iconos.svg#ui-cerrar"/></svg>
+        </button>
+        <button type="button" class="lightbox-btn lightbox-prev" data-lb-prev aria-label="Foto anterior">
+          <svg aria-hidden="true" width="28" height="28"><use href="assets/illustrations/iconos.svg#ui-flecha-izq"/></svg>
+        </button>
+        <figure class="lightbox-figure">
+          <img data-lb-img alt="" width="800" height="1000">
+          <figcaption data-lb-caption aria-live="polite"></figcaption>
+        </figure>
+        <button type="button" class="lightbox-btn lightbox-next" data-lb-next aria-label="Foto siguiente">
+          <svg aria-hidden="true" width="28" height="28"><use href="assets/illustrations/iconos.svg#ui-flecha-der"/></svg>
+        </button>
+      </div>
+    </dialog>
+
+    <!-- ===================================================================
+         4. SESIONES Y PRECIOS (precios en js/config.js)
+         =================================================================== -->
+    <section class="section section--lavender" id="sesiones" aria-labelledby="sesiones-title">
+      <div class="container">
+        <header class="section-head reveal">
+          <h2 class="section-title ears ears--zorro" id="sesiones-title">Sesiones</h2>
+          <p class="section-lead">Elige cómo quieres recordar estos días. Todos los packs incluyen asesoramiento previo, atrezo y la galería online privada.</p>
+        </header>
+
+        <!-- Tarjeta destacada: Recién nacido -->
+        <article class="newborn-card reveal" aria-labelledby="newborn-title">
+          <div class="newborn-head">
+            <span class="badge">Sesión estrella</span>
+            <h3 id="newborn-title">Recién nacido</h3>
+            <p>Entre los días 5 y 15 de vida, cuando duermen profundamente y se acurrucan como en la barriga.</p>
+          </div>
+
+          <ul class="packs">
+            <li class="pack">
+              <h4 data-config="packs.mini.nombre">Mini</h4>
+              <p class="price">Desde <strong><span data-config="packs.mini.precio">[PRECIO]</span> €</strong></p>
+              <ul class="pack-features">
+                <li><svg aria-hidden="true" width="18" height="18"><use href="assets/illustrations/iconos.svg#ui-reloj"/></svg> <span data-config="packs.mini.duracion">1,5 h</span></li>
+                <li><svg aria-hidden="true" width="18" height="18"><use href="assets/illustrations/iconos.svg#ui-check"/></svg> <span data-config="packs.mini.fotos">10 fotos editadas</span></li>
+                <li><svg aria-hidden="true" width="18" height="18"><use href="assets/illustrations/iconos.svg#huella"/></svg> <span data-config="packs.mini.disfraces">1 disfraz de animalito</span></li>
+              </ul>
+              <a class="btn btn--ghost" href="#reserva" data-pack="mini">Elegir Mini</a>
+            </li>
+
+            <li class="pack pack--featured">
+              <span class="pack-ribbon">Recomendada</span>
+              <h4 data-config="packs.completa.nombre">Completa</h4>
+              <p class="price">Desde <strong><span data-config="packs.completa.precio">[PRECIO]</span> €</strong></p>
+              <ul class="pack-features">
+                <li><svg aria-hidden="true" width="18" height="18"><use href="assets/illustrations/iconos.svg#ui-reloj"/></svg> <span data-config="packs.completa.duracion">2,5–3 h</span></li>
+                <li><svg aria-hidden="true" width="18" height="18"><use href="assets/illustrations/iconos.svg#ui-check"/></svg> <span data-config="packs.completa.fotos">20 fotos editadas</span></li>
+                <li><svg aria-hidden="true" width="18" height="18"><use href="assets/illustrations/iconos.svg#huella"/></svg> <span data-config="packs.completa.disfraces">2 disfraces de animalito</span></li>
+              </ul>
+              <a class="btn btn--primary" href="#reserva" data-pack="completa">Elegir Completa</a>
+            </li>
+
+            <li class="pack">
+              <h4 data-config="packs.premium.nombre">Premium</h4>
+              <p class="price">Desde <strong><span data-config="packs.premium.precio">[PRECIO]</span> €</strong></p>
+              <ul class="pack-features">
+                <li><svg aria-hidden="true" width="18" height="18"><use href="assets/illustrations/iconos.svg#ui-reloj"/></svg> <span data-config="packs.premium.duracion">3–4 h</span></li>
+                <li><svg aria-hidden="true" width="18" height="18"><use href="assets/illustrations/iconos.svg#ui-check"/></svg> <span data-config="packs.premium.fotos">30 fotos editadas + álbum</span></li>
+                <li><svg aria-hidden="true" width="18" height="18"><use href="assets/illustrations/iconos.svg#huella"/></svg> <span data-config="packs.premium.disfraces">3 disfraces + fotos con familia</span></li>
+              </ul>
+              <a class="btn btn--ghost" href="#reserva" data-pack="premium">Elegir Premium</a>
+            </li>
+          </ul>
+        </article>
+
+        <!-- Pack combinado -->
+        <aside class="combo reveal" aria-labelledby="combo-title">
+          <img class="combo-deco" src="assets/illustrations/nube.svg" alt="" width="200" height="80" loading="lazy">
+          <div>
+            <p class="badge badge--butter">Pack combinado</p>
+            <h3 id="combo-title" data-config="packs.combinado.nombre">Embarazo + Recién nacido</h3>
+            <p>Reserva las dos sesiones a la vez: la barriguita y, semanas después, tu bebé ya en brazos. Precio especial y plaza asegurada.</p>
+          </div>
+          <div class="combo-cta">
+            <p class="price">Desde <strong><span data-config="packs.combinado.precio">[PRECIO]</span> €</strong></p>
+            <p class="combo-save">Ahorras <span data-config="packs.combinado.ahorro">[AHORRO]</span> €</p>
+            <a class="btn btn--primary" href="#reserva" data-pack="combinado">Quiero el pack</a>
+          </div>
+        </aside>
+
+        <!-- Otras sesiones -->
+        <h3 class="subhead reveal">Otras sesiones</h3>
+        <ul class="other-sessions">
+          <li class="mini-card mini-card--lavender reveal">
+            <h4 data-config="packs.embarazo.nombre">Embarazo</h4>
+            <p>Entre las semanas 28 y 34, con vestidos y telas del estudio.</p>
+            <p class="price">Desde <strong><span data-config="packs.embarazo.precio">[PRECIO]</span> €</strong></p>
+            <p class="meta"><span data-config="packs.embarazo.duracion">1 h</span> · <span data-config="packs.embarazo.fotos">12 fotos editadas</span></p>
+            <a class="link-arrow" href="#reserva" data-pack="embarazo">Reservar embarazo</a>
+          </li>
+          <li class="mini-card mini-card--peach reveal">
+            <h4 data-config="packs.familia.nombre">Familia</h4>
+            <p>Papás, hermanos y hasta abuelos. Natural, cercana y con muchos abrazos.</p>
+            <p class="price">Desde <strong><span data-config="packs.familia.precio">[PRECIO]</span> €</strong></p>
+            <p class="meta"><span data-config="packs.familia.duracion">1 h</span> · <span data-config="packs.familia.fotos">15 fotos editadas</span></p>
+            <a class="link-arrow" href="#reserva" data-pack="familia">Reservar familia</a>
+          </li>
+          <li class="mini-card mini-card--butter reveal">
+            <h4 data-config="packs.primerAnio.nombre">Primer año / smash cake</h4>
+            <p>Su primer cumpleaños con tarta, globos y mucha risa (y migas).</p>
+            <p class="price">Desde <strong><span data-config="packs.primerAnio.precio">[PRECIO]</span> €</strong></p>
+            <p class="meta"><span data-config="packs.primerAnio.duracion">1 h</span> · <span data-config="packs.primerAnio.fotos">15 fotos editadas</span></p>
+            <a class="link-arrow" href="#reserva" data-pack="primer-anio">Reservar primer año</a>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         5. CÓMO FUNCIONA
+         =================================================================== -->
+    <section class="section" id="como-funciona" aria-labelledby="pasos-title">
+      <div class="container">
+        <header class="section-head reveal">
+          <h2 class="section-title ears ears--oso" id="pasos-title">Cómo funciona</h2>
+          <p class="section-lead">Sencillo y sin estrés. Tú solo tienes que traer a tu bebé.</p>
+        </header>
+        <ol class="steps">
+          <li class="step reveal">
+            <svg class="step-icon" aria-hidden="true" width="64" height="64"><use href="assets/illustrations/iconos.svg#paso-reserva"/></svg>
+            <h3>Reserva en el embarazo</h3>
+            <p>Escríbeme en el segundo trimestre. Bloqueamos tu plaza según la fecha prevista de parto con una pequeña señal.</p>
+          </li>
+          <li class="step reveal">
+            <svg class="step-icon" aria-hidden="true" width="64" height="64"><use href="assets/illustrations/iconos.svg#paso-preparacion"/></svg>
+            <h3>Preparación</h3>
+            <p>Elegimos juntas animalitos, colores y estilo. Te envío una guía con todo lo que tienes que saber.</p>
+          </li>
+          <li class="step reveal">
+            <svg class="step-icon" aria-hidden="true" width="64" height="64"><use href="assets/illustrations/iconos.svg#paso-sesion"/></svg>
+            <h3>La sesión, entre los días 5 y 15</h3>
+            <p>Cuando nazca, me avisas y fijamos el día. Sesión tranquila, con pausas para tomas y mimos.</p>
+          </li>
+          <li class="step reveal">
+            <svg class="step-icon" aria-hidden="true" width="64" height="64"><use href="assets/illustrations/iconos.svg#paso-edicion"/></svg>
+            <h3>Edición</h3>
+            <p>Seleccionas tus favoritas y las edito una a una, con un acabado suave y natural.</p>
+          </li>
+          <li class="step reveal">
+            <svg class="step-icon" aria-hidden="true" width="64" height="64"><use href="assets/illustrations/iconos.svg#paso-entrega"/></svg>
+            <h3>Entrega</h3>
+            <p>Recibes tu galería online privada y, si lo elegiste, tu álbum impreso para tenerlo siempre a mano.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         6. SEGURIDAD Y CUIDADOS
+         =================================================================== -->
+    <section class="section section--butter" id="seguridad" aria-labelledby="seguridad-title">
+      <div class="container">
+        <header class="section-head reveal">
+          <h2 class="section-title ears ears--conejo" id="seguridad-title">Seguridad y cuidados</h2>
+          <p class="section-lead">Lo primero, siempre, es tu bebé. Antes que cualquier foto.</p>
+        </header>
+        <ul class="safety">
+          <li class="safety-item reveal">
+            <svg aria-hidden="true" width="56" height="56"><use href="assets/illustrations/iconos.svg#seg-clima"/></svg>
+            <div><h3>Estudio climatizado</h3><p>Temperatura cálida y constante para que esté a gusto sin ropa.</p></div>
+          </li>
+          <li class="safety-item reveal">
+            <svg aria-hidden="true" width="56" height="56"><use href="assets/illustrations/iconos.svg#seg-higiene"/></svg>
+            <div><h3>Higiene rigurosa</h3><p>Lavado y desinfección de manos constante y estudio ventilado entre sesiones.</p></div>
+          </li>
+          <li class="safety-item reveal">
+            <svg aria-hidden="true" width="56" height="56"><use href="assets/illustrations/iconos.svg#seg-atrezo"/></svg>
+            <div><h3>Atrezo desinfectado</h3><p>Disfraces, mantas y telas lavados tras cada uso con productos aptos para bebés.</p></div>
+          </li>
+          <li class="safety-item reveal">
+            <svg aria-hidden="true" width="56" height="56"><use href="assets/illustrations/iconos.svg#seg-manos"/></svg>
+            <div><h3>Poses seguras</h3><p>Siempre con apoyo de las manos de un adulto. Nunca forzamos una postura.</p></div>
+          </li>
+          <li class="safety-item reveal">
+            <svg aria-hidden="true" width="56" height="56"><use href="assets/illustrations/iconos.svg#seg-composicion"/></svg>
+            <div><h3>Composición digital</h3><p>Las poses más delicadas se hacen en varias tomas y se unen en edición: el bebé nunca está solo.</p></div>
+          </li>
+          <li class="safety-item reveal">
+            <svg aria-hidden="true" width="56" height="56"><use href="assets/illustrations/iconos.svg#seg-ritmo"/></svg>
+            <div><h3>El ritmo lo marca el bebé</h3><p>Paramos para tomas, cambios y mimos las veces que haga falta.</p></div>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         7. TESTIMONIOS
+         =================================================================== -->
+    <section class="section" id="testimonios" aria-labelledby="testimonios-title">
+      <div class="container">
+        <header class="section-head reveal">
+          <h2 class="section-title ears ears--zorro" id="testimonios-title">Lo que dicen las familias</h2>
+        </header>
+
+        <div class="carousel reveal" role="region" aria-roledescription="carrusel" aria-label="Testimonios" data-carousel>
+          <div class="carousel-track" data-carousel-track tabindex="0" role="group" aria-label="Testimonios: desliza o usa las flechas">
+            <!-- PLACEHOLDER: sustituir por reseñas reales -->
+            <div class="testimonial" role="group" aria-roledescription="testimonio" aria-label="1 de 3">
+              <svg class="quote-icon" aria-hidden="true" width="32" height="32"><use href="assets/illustrations/iconos.svg#ui-cita"/></svg>
+              <blockquote>
+                <p>Estábamos nerviosos por si el bebé lloraba, y fue todo calma. Las fotos con el gorrito de osito nos hacen llorar cada vez que las vemos.</p>
+              </blockquote>
+              <p class="testimonial-author">Familia [Apellido] · Sesión recién nacido</p>
+            </div>
+            <!-- PLACEHOLDER: sustituir por reseñas reales -->
+            <div class="testimonial" role="group" aria-roledescription="testimonio" aria-label="2 de 3">
+              <svg class="quote-icon" aria-hidden="true" width="32" height="32"><use href="assets/illustrations/iconos.svg#ui-cita"/></svg>
+              <blockquote>
+                <p>Hicimos el pack de embarazo + recién nacido y fue la mejor decisión. Se nota el cariño y el cuidado en cada detalle.</p>
+              </blockquote>
+              <p class="testimonial-author">Familia [Apellido] · Pack combinado</p>
+            </div>
+            <!-- PLACEHOLDER: sustituir por reseñas reales -->
+            <div class="testimonial" role="group" aria-roledescription="testimonio" aria-label="3 de 3">
+              <svg class="quote-icon" aria-hidden="true" width="32" height="32"><use href="assets/illustrations/iconos.svg#ui-cita"/></svg>
+              <blockquote>
+                <p>Volvimos para el smash cake de su primer año. Ver juntas las fotos de conejito y las de la tarta es un regalo.</p>
+              </blockquote>
+              <p class="testimonial-author">Familia [Apellido] · Primer año</p>
+            </div>
+          </div>
+          <div class="carousel-controls">
+            <button type="button" class="round-btn" data-carousel-prev aria-label="Testimonio anterior">
+              <svg aria-hidden="true" width="22" height="22"><use href="assets/illustrations/iconos.svg#ui-flecha-izq"/></svg>
+            </button>
+            <div class="carousel-dots" data-carousel-dots></div>
+            <button type="button" class="round-btn" data-carousel-next aria-label="Testimonio siguiente">
+              <svg aria-hidden="true" width="22" height="22"><use href="assets/illustrations/iconos.svg#ui-flecha-der"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         8. PREGUNTAS FRECUENTES (acordeón nativo <details>, accesible por teclado)
+         =================================================================== -->
+    <section class="section section--peach" id="faq" aria-labelledby="faq-title">
+      <div class="container container--narrow">
+        <header class="section-head reveal">
+          <h2 class="section-title ears ears--oso" id="faq-title">Preguntas frecuentes</h2>
+        </header>
+        <div class="faq reveal">
+          <details class="faq-item" name="faq">
+            <summary>¿Cuándo debo reservar?</summary>
+            <div class="faq-body"><p>Lo ideal es durante el segundo trimestre del embarazo. Solo acepto <span data-config="plazasMes">[N]</span> recién nacidos al mes para dedicar a cada familia el tiempo que merece, y las plazas vuelan. Reservamos según tu fecha prevista de parto y ajustamos el día cuando nazca.</p></div>
+          </details>
+          <details class="faq-item" name="faq">
+            <summary>¿Qué tengo que llevar?</summary>
+            <div class="faq-body"><p>Solo pañales, toallitas, un chupete si lo usa y la toma preparada si toma biberón. Los disfraces, mantas y todo el atrezo los pongo yo. Ven con ropa cómoda: estarás como en casa.</p></div>
+          </details>
+          <details class="faq-item" name="faq">
+            <summary>¿Pueden salir los hermanos y los padres?</summary>
+            <div class="faq-body"><p>¡Claro! En el pack Premium están incluidas las fotos con familia. En los demás packs podemos añadirlas. Con hermanos pequeños, os recomiendo venir al principio de la sesión y que luego vuelvan a casa a descansar.</p></div>
+          </details>
+          <details class="faq-item" name="faq">
+            <summary>¿Cuánto dura la sesión?</summary>
+            <div class="faq-body"><p>Entre 1,5 y 4 horas según el pack. Parece mucho, pero incluye pausas para tomas, cambios de pañal y mimos: el bebé marca el ritmo.</p></div>
+          </details>
+          <details class="faq-item" name="faq">
+            <summary>¿Cuándo recibo las fotos?</summary>
+            <div class="faq-body"><p>Unos días después de la sesión te envío una galería para que elijas tus favoritas. Las fotos editadas llegan en un plazo de [N] semanas desde tu selección, en una galería online privada.</p></div>
+          </details>
+          <details class="faq-item" name="faq">
+            <summary>¿Hacéis sesiones fuera del estudio?</summary>
+            <div class="faq-body"><p>Las sesiones de recién nacido son siempre en el estudio, que está preparado y climatizado para su seguridad. Las de embarazo y familia pueden hacerse en exteriores de <span data-config="ciudad">[CIUDAD]</span>; pregúntame por las localizaciones.</p></div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         9. RESERVA / CONTACTO
+         =================================================================== -->
+    <section class="section" id="reserva" aria-labelledby="reserva-title">
+      <div class="container booking">
+        <div class="booking-info reveal">
+          <h2 class="section-title ears ears--conejo" id="reserva-title">Reserva tu sesión</h2>
+          <p class="section-lead">Cuéntame un poco sobre vosotros y te enviaré disponibilidad y todos los detalles.</p>
+          <p class="response-time">
+            <svg aria-hidden="true" width="22" height="22"><use href="assets/illustrations/iconos.svg#ui-reloj"/></svg>
+            <strong data-config="tiempoRespuesta">Respondo en menos de 24 h</strong>
+          </p>
+          <ul class="contact-list">
+            <li>
+              <svg aria-hidden="true" width="22" height="22"><use href="assets/illustrations/iconos.svg#ui-mail"/></svg>
+              <a href="mailto:[EMAIL]" data-config-href="mailto:email" data-config="email">[EMAIL]</a>
+            </li>
+            <li>
+              <svg aria-hidden="true" width="22" height="22"><use href="assets/illustrations/iconos.svg#ui-instagram"/></svg>
+              <a href="https://www.instagram.com/" data-config-href="instagramUrl" data-config="instagram" rel="noopener" target="_blank">[@INSTAGRAM]</a>
+            </li>
+            <li>
+              <svg aria-hidden="true" width="22" height="22"><use href="assets/illustrations/iconos.svg#ui-ubicacion"/></svg>
+              <span>Estudio en <span data-config="ciudad">[CIUDAD]</span></span>
+            </li>
+          </ul>
+          <img class="booking-deco" src="assets/illustrations/hero-fallback.svg" alt="" width="800" height="640" loading="lazy">
+        </div>
+
+        <form class="booking-form reveal" data-booking-form novalidate>
+          <div class="form-summary" data-form-summary tabindex="-1" role="alert" hidden></div>
+
+          <!-- Honeypot antispam: invisible para personas; si se rellena, el envío se descarta -->
+          <div class="hp" aria-hidden="true">
+            <label for="f-web">No rellenes este campo</label>
+            <input type="text" id="f-web" name="_gotcha" tabindex="-1" autocomplete="off">
+          </div>
+
+          <div class="field">
+            <label for="f-nombre">Nombre <span class="req" aria-hidden="true">*</span></label>
+            <input id="f-nombre" name="nombre" type="text" autocomplete="name" required aria-describedby="e-nombre">
+            <p class="field-error" id="e-nombre"></p>
+          </div>
+
+          <div class="field-row">
+            <div class="field">
+              <label for="f-email">Email <span class="req" aria-hidden="true">*</span></label>
+              <input id="f-email" name="email" type="email" autocomplete="email" inputmode="email" required aria-describedby="e-email">
+              <p class="field-error" id="e-email"></p>
+            </div>
+            <div class="field">
+              <label for="f-telefono">Teléfono <span class="req" aria-hidden="true">*</span></label>
+              <input id="f-telefono" name="telefono" type="tel" autocomplete="tel" inputmode="tel" required aria-describedby="e-telefono">
+              <p class="field-error" id="e-telefono"></p>
+            </div>
+          </div>
+
+          <div class="field-row">
+            <div class="field">
+              <label for="f-tipo">Tipo de sesión <span class="req" aria-hidden="true">*</span></label>
+              <select id="f-tipo" name="tipo_sesion" required aria-describedby="e-tipo">
+                <option value="">Elige una opción</option>
+                <option value="recien-nacido">Recién nacido</option>
+                <option value="embarazo">Embarazo</option>
+                <option value="combinado">Embarazo + Recién nacido</option>
+                <option value="familia">Familia</option>
+                <option value="primer-anio">Primer año / smash cake</option>
+              </select>
+              <p class="field-error" id="e-tipo"></p>
+            </div>
+            <div class="field">
+              <label for="f-fecha" data-date-label>Fecha prevista de parto o fecha deseada <span class="req" aria-hidden="true">*</span></label>
+              <input id="f-fecha" name="fecha" type="date" required aria-describedby="e-fecha">
+              <p class="field-error" id="e-fecha"></p>
+            </div>
+          </div>
+
+          <div class="field-row">
+            <div class="field">
+              <label for="f-pack">Pack de interés</label>
+              <select id="f-pack" name="pack">
+                <option value="">Aún no lo sé</option>
+                <option value="mini">Recién nacido · Mini</option>
+                <option value="completa">Recién nacido · Completa</option>
+                <option value="premium">Recién nacido · Premium</option>
+                <option value="combinado">Embarazo + Recién nacido</option>
+                <option value="embarazo">Embarazo</option>
+                <option value="familia">Familia</option>
+                <option value="primer-anio">Primer año / smash cake</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="f-origen">¿Cómo me conociste?</label>
+              <select id="f-origen" name="como_nos_conociste">
+                <option value="">Elige una opción</option>
+                <option>Instagram</option>
+                <option>Google</option>
+                <option>Recomendación de una amiga o familiar</option>
+                <option>Matrona / clínica / tienda</option>
+                <option>Otro</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="f-mensaje">Mensaje</label>
+            <textarea id="f-mensaje" name="mensaje" rows="4" placeholder="¿Algún animalito favorito? ¿Hermanos? Cuéntame lo que quieras."></textarea>
+          </div>
+
+          <div class="field field--check">
+            <input id="f-privacidad" name="acepta_privacidad" type="checkbox" value="sí" required aria-describedby="e-privacidad">
+            <label for="f-privacidad">He leído y acepto la <a href="privacidad.html" target="_blank" rel="noopener">política de privacidad</a> <span class="req" aria-hidden="true">*</span></label>
+            <p class="field-error" id="e-privacidad"></p>
+          </div>
+
+          <p class="legal-note">Responsable: <span data-config="nombre">[NOMBRE FOTÓGRAFA]</span>. Finalidad: responder a tu solicitud de reserva. Puedes ejercer tus derechos escribiendo a <span data-config="email">[EMAIL]</span>. Más información en la <a href="privacidad.html">política de privacidad</a>.</p>
+
+          <button class="btn btn--primary btn--lg btn--block" type="submit" data-submit>
+            <span data-submit-label>Enviar solicitud de reserva</span>
+          </button>
+          <p class="form-hint"><span class="req" aria-hidden="true">*</span> Campos obligatorios</p>
+
+          <div class="form-status" data-form-status role="status" aria-live="polite"></div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- =====================================================================
+       10. FOOTER
+       ===================================================================== -->
+  <footer class="site-footer">
+    <img class="footer-sep" src="assets/illustrations/separador-estrellas.svg" alt="" width="240" height="40" loading="lazy">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <p class="logo-text" data-config="nombre">[NOMBRE FOTÓGRAFA]</p>
+        <p>Fotógrafa de recién nacidos en <span data-config="ciudad">[CIUDAD]</span></p>
+      </div>
+      <ul class="footer-social" aria-label="Redes y contacto">
+        <li>
+          <a href="https://www.instagram.com/" data-config-href="instagramUrl" rel="noopener" target="_blank" aria-label="Instagram">
+            <svg aria-hidden="true" width="22" height="22"><use href="assets/illustrations/iconos.svg#ui-instagram"/></svg>
+          </a>
+        </li>
+        <li>
+          <a href="mailto:[EMAIL]" data-config-href="mailto:email" aria-label="Enviar email">
+            <svg aria-hidden="true" width="22" height="22"><use href="assets/illustrations/iconos.svg#ui-mail"/></svg>
+          </a>
+        </li>
+      </ul>
+      <nav aria-label="Legal">
+        <ul class="footer-legal">
+          <li><a href="aviso-legal.html">Aviso legal</a></li>
+          <li><a href="privacidad.html">Política de privacidad</a></li>
+          <li><a href="cookies.html">Política de cookies</a></li>
+        </ul>
+      </nav>
+      <p class="copyright">© <span data-year>2026</span> <span data-config="nombre">[NOMBRE FOTÓGRAFA]</span>. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+</body>
+</html>

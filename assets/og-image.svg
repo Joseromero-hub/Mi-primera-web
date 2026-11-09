@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+<rect width="1200" height="630" fill="#FFFBF6"/>
+<rect x="660" y="0" width="540" height="630" fill="#EAF6F0"/>
+<path d="M700 74 L704.8 85.2 L716 90 L704.8 94.8 L700 106 L695.2 94.8 L684 90 L695.2 85.2Z" fill="#FBEBB5" stroke="#3A3140" stroke-width="2" stroke-linejoin="round"/><path d="M1120 108 L1123.6 116.4 L1132 120 L1123.6 123.6 L1120 132 L1116.4 123.6 L1108 120 L1116.4 116.4Z" fill="#F8CDB8" stroke="#3A3140" stroke-width="2" stroke-linejoin="round"/><path d="M1080 506 L1084.2 515.8 L1094 520 L1084.2 524.2 L1080 534 L1075.8 524.2 L1066 520 L1075.8 515.8Z" fill="#D9CFF0" stroke="#3A3140" stroke-width="2" stroke-linejoin="round"/>
+<g transform="translate(680 60) scale(.7)"><path d="M100 520 c0 -126 90 -178.5 150 -126 c30 -147 180 -178.5 228 -73.5 c60 -105 192 -63 180 42 c42.00000000000001 0 42.00000000000001 157.5 0 157.5z" fill="#FFFFFF" stroke="#3A3140" stroke-width="3" stroke-linejoin="round"/><g transform="translate(230 380) scale(.7)"><g><circle cx="-43.199999999999996" cy="-42" r="19.2" fill="#E7BFA3" stroke="#3A3140" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="43.199999999999996" cy="-42" r="19.2" fill="#E7BFA3" stroke="#3A3140" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="-43.199999999999996" cy="-42" r="9" fill="#F4AFBF"/>
+<circle cx="43.199999999999996" cy="-42" r="9" fill="#F4AFBF"/><circle cx="0" cy="0" r="60" fill="#E7BFA3" stroke="#3A3140" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M-33 -1.2 q9 8 18 0" fill="none" stroke="#3A3140" stroke-width="2.7" stroke-linecap="round"/><path d="M15 -1.2 q9 8 18 0" fill="none" stroke="#3A3140" stroke-width="2.7" stroke-linecap="round"/>
+<ellipse cx="-34.8" cy="18" rx="9" ry="5.5" fill="#F4AFBF" opacity=".7"/><ellipse cx="34.8" cy="18" rx="9" ry="5.5" fill="#F4AFBF" opacity=".7"/><ellipse cx="0" cy="19.2" rx="21.599999999999998" ry="15.600000000000001" fill="#FDEEE6" stroke="#3A3140" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+<ellipse cx="0" cy="13.2" rx="6" ry="4.2" fill="#3A3140"/></g></g><g transform="translate(380 350) scale(.7)"><g><path d="M-21 -45 C-45 -114 -3 -120 -4.8 -48Z" fill="#D9CFF0" stroke="#3A3140" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M-18 -54 C-31.200000000000003 -96 -12 -102 -10.200000000000001 -57Z" fill="#F4AFBF" opacity=".8"/>
+<path d="M12 -48 C36 -78 96 -66 90 -45 C78 -27 42 -36 28.799999999999997 -36Z" fill="#D9CFF0" stroke="#3A3140" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/><circle cx="0" cy="0" r="60" fill="#D9CFF0" stroke="#3A3140" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M-33 -1.2 q9 8 18 0" fill="none" stroke="#3A3140" stroke-width="2.7" stroke-linecap="round"/><path d="M15 -1.2 q9 8 18 0" fill="none" stroke="#3A3140" stroke-width="2.7" stroke-linecap="round"/>
+<ellipse cx="-34.8" cy="18" rx="9" ry="5.5" fill="#F4AFBF" opacity=".7"/><ellipse cx="34.8" cy="18" rx="9" ry="5.5" fill="#F4AFBF" opacity=".7"/><ellipse cx="0" cy="18" rx="16.8" ry="12" fill="#F2EEFA" stroke="#3A3140" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M-4.8 12 h9.6 l-4.8 4.8z" fill="#F4AFBF" stroke="#3A3140" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/></g></g><g transform="translate(530 375) scale(.7)"><g><path d="M-51 -21 L-45 -75 L-12 -51Z" fill="#F4B595" stroke="#3A3140" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M51 -21 L45 -75 L12 -51Z" fill="#F4B595" stroke="#3A3140" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M-42 -33 L-40.2 -60 L-22.8 -48Z" fill="#FDEEE6"/>
+<path d="M42 -33 L40.2 -60 L22.8 -48Z" fill="#FDEEE6"/><circle cx="0" cy="0" r="60" fill="#F4B595" stroke="#3A3140" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/><path d="M-58.8 3 Q-30 57 0 58.8 Q30 57 58.8 3 Q30 21 0 12 Q-30 21 -58.8 3Z" fill="#FFFBF6"/>
+<path d="M-33 -1.2 q9 8 18 0" fill="none" stroke="#3A3140" stroke-width="2.7" stroke-linecap="round"/><path d="M15 -1.2 q9 8 18 0" fill="none" stroke="#3A3140" stroke-width="2.7" stroke-linecap="round"/>
+<ellipse cx="-34.8" cy="18" rx="9" ry="5.5" fill="#F4AFBF" opacity=".7"/><ellipse cx="34.8" cy="18" rx="9" ry="5.5" fill="#F4AFBF" opacity=".7"/><ellipse cx="0" cy="16.8" rx="6" ry="4.2" fill="#3A3140"/></g></g></g>
+<text x="70" y="250" font-family="Georgia, serif" font-size="58" font-weight="600" fill="#3A3140">Fotografía newborn</text>
+<text x="70" y="320" font-family="Georgia, serif" font-size="58" font-weight="600" fill="#A23E5F">en [CIUDAD]</text>
+<text x="70" y="400" font-family="Arial, sans-serif" font-size="28" fill="#665B6B">[NOMBRE FOTÓGRAFA]</text>
+<text x="70" y="445" font-family="Arial, sans-serif" font-size="28" fill="#665B6B">Reserva durante el embarazo</text>
+</svg>

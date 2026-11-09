@@ -1,0 +1,126 @@
+<svg xmlns="http://www.w3.org/2000/svg">
+  <!-- =====================================================================
+       Sprite de iconos propios. Uso: <svg><use href="assets/illustrations/iconos.svg#id"/></svg>
+       Ilustrados (pasos/seguridad): línea fina + relleno pastel.
+       Interfaz (ui-*): usan currentColor para heredar el color del texto.
+       ===================================================================== -->
+
+  <!-- Pasos -->
+  <symbol id="paso-reserva" viewBox="0 0 64 64">
+    <rect x="9" y="13" width="46" height="42" rx="9" fill="#D9CFF0" stroke="#3A3140" stroke-width="2"/>
+    <path d="M9 25h46" stroke="#3A3140" stroke-width="2"/>
+    <path d="M21 8v10M43 8v10" stroke="#3A3140" stroke-width="2.5" stroke-linecap="round"/>
+    <path d="M32 47c-8-5-10-9-8-12 2-2.6 5.6-1.6 8 1 2.4-2.6 6-3.6 8-1 2 3 0 7-8 12z" fill="#F4AFBF" stroke="#3A3140" stroke-width="2" stroke-linejoin="round"/>
+  </symbol>
+  <symbol id="paso-preparacion" viewBox="0 0 64 64">
+    <rect x="13" y="10" width="38" height="46" rx="8" fill="#FEF8E3" stroke="#3A3140" stroke-width="2"/>
+    <rect x="24" y="6" width="16" height="8" rx="4" fill="#FBEBB5" stroke="#3A3140" stroke-width="2"/>
+    <path d="M21 27l3 3 6-6M21 41l3 3 6-6" fill="none" stroke="#3A3140" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M35 28h9M35 42h9" stroke="#3A3140" stroke-width="2" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="paso-sesion" viewBox="0 0 64 64">
+    <rect x="7" y="18" width="50" height="36" rx="10" fill="#BFE5D4" stroke="#3A3140" stroke-width="2"/>
+    <rect x="16" y="11" width="14" height="9" rx="4" fill="#FDEEE6" stroke="#3A3140" stroke-width="2"/>
+    <circle cx="32" cy="36" r="11" fill="#FFFBF6" stroke="#3A3140" stroke-width="2"/>
+    <path d="M27.5 35.5q2 2 4 0M32.5 35.5q2 2 4 0" fill="none" stroke="#3A3140" stroke-width="1.6" stroke-linecap="round"/>
+    <circle cx="49" cy="26" r="2" fill="#3A3140"/>
+  </symbol>
+  <symbol id="paso-edicion" viewBox="0 0 64 64">
+    <rect x="8" y="12" width="40" height="32" rx="7" fill="#FDEEE6" stroke="#3A3140" stroke-width="2"/>
+    <path d="M14 38l9-10 7 7 5-5 8 8" fill="none" stroke="#3A3140" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+    <circle cx="38" cy="22" r="3.5" fill="#FBEBB5" stroke="#3A3140" stroke-width="2"/>
+    <path d="M40 54l14-14 4 4-14 14-6 2z" fill="#D9CFF0" stroke="#3A3140" stroke-width="2" stroke-linejoin="round"/>
+  </symbol>
+  <symbol id="paso-entrega" viewBox="0 0 64 64">
+    <rect x="10" y="26" width="44" height="30" rx="6" fill="#F8CDB8" stroke="#3A3140" stroke-width="2"/>
+    <rect x="7" y="18" width="50" height="10" rx="5" fill="#FDEEE6" stroke="#3A3140" stroke-width="2"/>
+    <path d="M32 18v38" stroke="#3A3140" stroke-width="2"/>
+    <path d="M32 18c-4-10-16-10-13-3 2 3 9 3 13 3zM32 18c4-10 16-10 13-3-2 3-9 3-13 3z" fill="#BFE5D4" stroke="#3A3140" stroke-width="2" stroke-linejoin="round"/>
+  </symbol>
+
+  <!-- Seguridad -->
+  <symbol id="seg-clima" viewBox="0 0 64 64">
+    <rect x="25" y="6" width="14" height="38" rx="7" fill="#FFFBF6" stroke="#3A3140" stroke-width="2"/>
+    <circle cx="32" cy="48" r="10" fill="#F8CDB8" stroke="#3A3140" stroke-width="2"/>
+    <path d="M32 22v24" stroke="#F8CDB8" stroke-width="5" stroke-linecap="round"/>
+    <path d="M44 16h7M44 24h5M44 32h7" stroke="#3A3140" stroke-width="2" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="seg-higiene" viewBox="0 0 64 64">
+    <path d="M14 34c0-6 4-9 8-9h18c6 0 10 4 10 10v8c0 8-6 13-14 13h-8c-8 0-14-6-14-13z" fill="#FDEEE6" stroke="#3A3140" stroke-width="2"/>
+    <circle cx="20" cy="15" r="6" fill="#BFE5D4" stroke="#3A3140" stroke-width="2"/>
+    <circle cx="36" cy="11" r="4" fill="#EAF6F0" stroke="#3A3140" stroke-width="2"/>
+    <circle cx="47" cy="18" r="3" fill="#D9CFF0" stroke="#3A3140" stroke-width="2"/>
+  </symbol>
+  <symbol id="seg-atrezo" viewBox="0 0 64 64">
+    <path d="M10 44c0-10 10-18 22-18s22 8 22 18v4a6 6 0 0 1-6 6H16a6 6 0 0 1-6-6z" fill="#D9CFF0" stroke="#3A3140" stroke-width="2"/>
+    <circle cx="20" cy="25" r="6" fill="#D9CFF0" stroke="#3A3140" stroke-width="2"/>
+    <circle cx="44" cy="25" r="6" fill="#D9CFF0" stroke="#3A3140" stroke-width="2"/>
+    <path d="M26 42l4 4 9-9" fill="none" stroke="#3A3140" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M50 8l1.6 4.4L56 14l-4.4 1.6L50 20l-1.6-4.4L44 14l4.4-1.6z" fill="#FBEBB5" stroke="#3A3140" stroke-width="1.6" stroke-linejoin="round"/>
+  </symbol>
+  <symbol id="seg-manos" viewBox="0 0 64 64">
+    <path d="M6 40c6-2 12-1 16 3l8 6c2 2 0 5-3 4l-6-3" fill="none" stroke="#3A3140" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M6 40v14h30c8 0 14-2 20-8l3-3c2-2 0-5-3-4l-10 5" fill="#F8CDB8" stroke="#3A3140" stroke-width="2" stroke-linejoin="round"/>
+    <circle cx="36" cy="22" r="11" fill="#FEF8E3" stroke="#3A3140" stroke-width="2"/>
+    <path d="M31 22q2 2 4 0M37 22q2 2 4 0" fill="none" stroke="#3A3140" stroke-width="1.6" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="seg-composicion" viewBox="0 0 64 64">
+    <rect x="8" y="10" width="34" height="28" rx="6" fill="#EAF6F0" stroke="#3A3140" stroke-width="2"/>
+    <rect x="22" y="26" width="34" height="28" rx="6" fill="#BFE5D4" stroke="#3A3140" stroke-width="2"/>
+    <path d="M32 40h14M39 33v14" stroke="#3A3140" stroke-width="2" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="seg-ritmo" viewBox="0 0 64 64">
+    <path d="M38 8a22 22 0 1 0 18 30A18 18 0 0 1 38 8z" fill="#FBEBB5" stroke="#3A3140" stroke-width="2" stroke-linejoin="round"/>
+    <path d="M44 14h8l-8 8h8" fill="none" stroke="#3A3140" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M22 36q3 3 6 0" fill="none" stroke="#3A3140" stroke-width="2" stroke-linecap="round"/>
+  </symbol>
+
+  <!-- Decorativos -->
+  <symbol id="huella" viewBox="0 0 32 32">
+    <ellipse cx="16" cy="21" rx="7.5" ry="6"/><circle cx="7" cy="13" r="3"/><circle cx="12.5" cy="8" r="3"/><circle cx="19.5" cy="8" r="3"/><circle cx="25" cy="13" r="3"/>
+  </symbol>
+  <symbol id="estrella" viewBox="0 0 24 24">
+    <path d="M12 2l2.6 7.4L22 12l-7.4 2.6L12 22l-2.6-7.4L2 12l7.4-2.6z"/>
+  </symbol>
+  <symbol id="corazon" viewBox="0 0 24 24">
+    <path d="M12 21C3 15 1 10 4 6.5 6.6 3.6 10.2 4.6 12 7.4 13.8 4.6 17.4 3.6 20 6.5 23 10 21 15 12 21z"/>
+  </symbol>
+
+  <!-- Interfaz -->
+  <symbol id="ui-instagram" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+    <rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r="1" fill="currentColor" stroke="none"/>
+  </symbol>
+  <symbol id="ui-mail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round">
+    <rect x="3" y="5" width="18" height="14" rx="3"/><path d="M4 7l8 6 8-6"/>
+  </symbol>
+  <symbol id="ui-telefono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round">
+    <path d="M5 3h4l2 5-2.5 1.5a11 11 0 0 0 6 6L16 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 5a2 2 0 0 1 2-2z"/>
+  </symbol>
+  <symbol id="ui-ubicacion" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+    <path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/>
+  </symbol>
+  <symbol id="ui-reloj" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+    <circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>
+  </symbol>
+  <symbol id="ui-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M5 12.5l4.5 4.5L19 7.5"/>
+  </symbol>
+  <symbol id="ui-flecha-izq" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M15 5l-7 7 7 7"/>
+  </symbol>
+  <symbol id="ui-flecha-der" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M9 5l7 7-7 7"/>
+  </symbol>
+  <symbol id="ui-cerrar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+    <path d="M6 6l12 12M18 6L6 18"/>
+  </symbol>
+  <symbol id="ui-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+    <path d="M4 7h16M4 12h16M4 17h10"/>
+  </symbol>
+  <symbol id="ui-mas" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+    <path d="M12 5v14M5 12h14"/>
+  </symbol>
+  <symbol id="ui-cita" viewBox="0 0 32 32">
+    <path d="M6 24c-2-6 0-14 8-17l1 3c-4 2-5 5-5 7 3 0 5 2 5 4s-2 5-5 5c-2 0-3-1-4-2zm14 0c-2-6 0-14 8-17l1 3c-4 2-5 5-5 7 3 0 5 2 5 4s-2 5-5 5c-2 0-3-1-4-2z" fill="currentColor"/>
+  </symbol>
+</svg>
