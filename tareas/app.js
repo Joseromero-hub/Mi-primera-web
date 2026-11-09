@@ -205,7 +205,7 @@
     if (!total) {
       els.progressText.textContent = 'Sin tareas';
     } else if (done === total) {
-      els.progressText.textContent = '¡Todo hecho! ' + done + ' de ' + total + ' completadas (100%)';
+      els.progressText.textContent = 'Todas las tareas completadas: ' + done + ' de ' + total + ' (100%)';
     } else {
       els.progressText.textContent = done + ' de ' + total + ' completadas (' + pct + '%)';
     }
