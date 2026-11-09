@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Tareas del día</title>
+  <title>Gestión de tareas</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -13,41 +13,60 @@
       <span class="brand">Gestión de tareas</span>
     </div>
   </header>
-  <main class="app">
-    <div class="day-nav">
-      <button type="button" class="icon-btn" id="prev-day" aria-label="Día anterior">&#8249;</button>
-      <div class="day-info">
-        <h1 id="day-title">Hoy</h1>
-        <p id="day-subtitle" class="muted"></p>
-      </div>
-      <button type="button" class="icon-btn" id="next-day" aria-label="Día siguiente">&#8250;</button>
-    </div>
-    <div class="today-row">
-      <button type="button" class="link-btn" id="go-today">Hoy</button>
-    </div>
 
-    <section class="progress" aria-label="Progreso del día">
-      <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="progress-bar">
-        <div class="progress-fill" id="progress-fill"></div>
+  <main class="app">
+    <!-- Calendario mensual -->
+    <section class="calendar" aria-label="Calendario">
+      <div class="cal-header">
+        <button type="button" class="icon-btn" id="prev-month" aria-label="Mes anterior">&#8249;</button>
+        <h1 id="month-title" class="month-title">Mes</h1>
+        <button type="button" class="icon-btn" id="next-month" aria-label="Mes siguiente">&#8250;</button>
       </div>
-      <p class="progress-text" id="progress-text">Sin tareas</p>
+      <div class="cal-weekdays" aria-hidden="true">
+        <span>L</span><span>M</span><span>X</span><span>J</span><span>V</span><span>S</span><span>D</span>
+      </div>
+      <div id="cal-grid" class="cal-grid"></div>
+      <div class="cal-footer">
+        <span class="legend"><i class="dot dot-open"></i>Con pendientes</span>
+        <span class="legend"><i class="dot dot-done"></i>Todo completado</span>
+        <button type="button" class="link-btn" id="go-today">Ir a hoy</button>
+      </div>
     </section>
 
-    <form id="add-form" class="add-form" autocomplete="off">
-      <label for="new-task" class="visually-hidden">Nueva tarea</label>
-      <input id="new-task" type="text" placeholder="Escriba una nueva tarea" maxlength="200">
-      <button type="submit">Añadir</button>
-    </form>
-
-    <ul id="task-list" class="task-list" aria-label="Tareas del día"></ul>
-    <p id="empty-msg" class="empty muted" hidden>No hay tareas para este día.</p>
-
-    <section id="pending" class="pending" hidden>
-      <div class="pending-header">
-        <h2>Pendientes de días anteriores</h2>
-        <button type="button" class="small-btn" id="move-all">Pasar todas a hoy</button>
+    <!-- Detalle del día seleccionado -->
+    <section class="day-panel" aria-labelledby="day-title">
+      <div class="day-nav">
+        <button type="button" class="icon-btn small" id="prev-day" aria-label="Día anterior">&#8249;</button>
+        <div class="day-info">
+          <h2 id="day-title">Hoy</h2>
+          <p id="day-subtitle" class="muted"></p>
+        </div>
+        <button type="button" class="icon-btn small" id="next-day" aria-label="Día siguiente">&#8250;</button>
       </div>
-      <ul id="pending-list" class="task-list"></ul>
+
+      <div class="progress" aria-label="Progreso del día">
+        <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="progress-bar">
+          <div class="progress-fill" id="progress-fill"></div>
+        </div>
+        <p class="progress-text" id="progress-text">Sin tareas</p>
+      </div>
+
+      <form id="add-form" class="add-form" autocomplete="off">
+        <label for="new-task" class="visually-hidden">Nueva tarea</label>
+        <input id="new-task" type="text" placeholder="Escriba una nueva tarea" maxlength="200">
+        <button type="submit">Añadir</button>
+      </form>
+
+      <ul id="task-list" class="task-list" aria-label="Tareas del día"></ul>
+      <p id="empty-msg" class="empty muted" hidden>No hay tareas para este día.</p>
+
+      <section id="pending" class="pending" hidden>
+        <div class="pending-header">
+          <h3>Pendientes de días anteriores</h3>
+          <button type="button" class="small-btn" id="move-all">Pasar todas a hoy</button>
+        </div>
+        <ul id="pending-list" class="task-list"></ul>
+      </section>
     </section>
 
     <footer class="backup">

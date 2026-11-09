@@ -64,11 +64,27 @@
 
   var tasks = load();
   var currentDay = todayKey();
+  var viewMonth = monthOf(currentDay); // { y, m } del mes que se muestra en el calendario
   var editingId = null;
+
+  function monthOf(key) {
+    var d = fromKey(key);
+    return { y: d.getFullYear(), m: d.getMonth() };
+  }
+  function setDay(key) {
+    currentDay = key;
+    viewMonth = monthOf(key);
+    editingId = null;
+    render();
+  }
 
   // ---------- Elementos ----------
   var $ = function (id) { return document.getElementById(id); };
   var els = {
+    monthTitle: $('month-title'),
+    grid: $('cal-grid'),
+    prevMonth: $('prev-month'),
+    nextMonth: $('next-month'),
     title: $('day-title'),
     subtitle: $('day-subtitle'),
     prev: $('prev-day'),
@@ -95,13 +111,96 @@
     var t = todayKey();
     els.title.textContent = dayTitle(currentDay);
     els.subtitle.textContent = longDate(currentDay);
-    els.today.hidden = currentDay === t;
+    var tm = monthOf(t);
+    els.today.hidden = currentDay === t && viewMonth.y === tm.y && viewMonth.m === tm.m;
 
+    renderCalendar(t);
     var dayTasks = tasks.filter(function (x) { return x.date === currentDay; });
     renderList(dayTasks);
     renderProgress(dayTasks);
     renderPending(t);
   }
+
+  // ---------- Calendario ----------
+  function statsByDay() {
+    var map = {};
+    tasks.forEach(function (x) {
+      var s = map[x.date] || (map[x.date] = { total: 0, done: 0 });
+      s.total++;
+      if (x.done) s.done++;
+    });
+    return map;
+  }
+
+  function renderCalendar(t) {
+    var stats = statsByDay();
+    var first = new Date(viewMonth.y, viewMonth.m, 1);
+    var daysInMonth = new Date(viewMonth.y, viewMonth.m + 1, 0).getDate();
+    var offset = (first.getDay() + 6) % 7; // semana empieza en lunes
+    var cells = Math.ceil((offset + daysInMonth) / 7) * 7;
+
+    els.monthTitle.textContent = capitalize(first.toLocaleDateString('es-ES', { month: 'long', year: 'numeric' }));
+
+    var hadFocus = els.grid.contains(document.activeElement);
+    els.grid.textContent = '';
+
+    for (var i = 0; i < cells; i++) {
+      var d = new Date(viewMonth.y, viewMonth.m, 1 - offset + i);
+      var key = toKey(d);
+      var st = stats[key];
+      var btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'cal-day';
+      btn.dataset.date = key;
+      if (d.getMonth() !== viewMonth.m) btn.classList.add('other-month');
+      if (key === t) btn.classList.add('is-today');
+      if (key === currentDay) {
+        btn.classList.add('is-selected');
+        btn.setAttribute('aria-current', 'date');
+      }
+      btn.tabIndex = key === currentDay || (i === offset && monthOf(currentDay).m !== viewMonth.m) ? 0 : -1;
+
+      var num = document.createElement('span');
+      num.className = 'cal-num';
+      num.textContent = d.getDate();
+      btn.appendChild(num);
+
+      var label = d.toLocaleDateString('es-ES', { weekday: 'long', day: 'numeric', month: 'long' });
+      if (st) {
+        var open = st.total - st.done;
+        btn.classList.add(open ? 'has-open' : 'all-done');
+        var count = document.createElement('span');
+        count.className = 'cal-count';
+        count.textContent = st.done + '/' + st.total;
+        btn.appendChild(count);
+        label += ', ' + st.total + (st.total === 1 ? ' tarea' : ' tareas') + ', ' + st.done + ' completadas';
+      } else {
+        label += ', sin tareas';
+      }
+      btn.setAttribute('aria-label', label);
+      els.grid.appendChild(btn);
+    }
+
+    if (hadFocus) {
+      var sel = els.grid.querySelector('[tabindex="0"]');
+      if (sel) sel.focus();
+    }
+  }
+
+  els.grid.addEventListener('click', function (e) {
+    var btn = e.target.closest('.cal-day');
+    if (btn) setDay(btn.dataset.date);
+  });
+
+  // Navegación con teclado por el calendario
+  els.grid.addEventListener('keydown', function (e) {
+    var btn = e.target.closest('.cal-day');
+    if (!btn) return;
+    var step = { ArrowLeft: -1, ArrowRight: 1, ArrowUp: -7, ArrowDown: 7 }[e.key];
+    if (!step) return;
+    e.preventDefault();
+    setDay(addDays(btn.dataset.date, step));
+  });
 
   function renderList(dayTasks) {
     els.list.textContent = '';
@@ -276,9 +375,17 @@
     els.input.classList.remove('shake');
   });
 
-  els.prev.addEventListener('click', function () { currentDay = addDays(currentDay, -1); render(); });
-  els.next.addEventListener('click', function () { currentDay = addDays(currentDay, 1); render(); });
-  els.today.addEventListener('click', function () { currentDay = todayKey(); render(); });
+  els.prev.addEventListener('click', function () { setDay(addDays(currentDay, -1)); });
+  els.next.addEventListener('click', function () { setDay(addDays(currentDay, 1)); });
+  els.today.addEventListener('click', function () { setDay(todayKey()); });
+  els.prevMonth.addEventListener('click', function () {
+    viewMonth = monthOf(toKey(new Date(viewMonth.y, viewMonth.m - 1, 1)));
+    render();
+  });
+  els.nextMonth.addEventListener('click', function () {
+    viewMonth = monthOf(toKey(new Date(viewMonth.y, viewMonth.m + 1, 1)));
+    render();
+  });
 
   els.moveAll.addEventListener('click', function () {
     var t = todayKey();
