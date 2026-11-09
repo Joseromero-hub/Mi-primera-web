@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tareas del día</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="app">
+    <header class="day-nav">
+      <button type="button" class="icon-btn" id="prev-day" aria-label="Día anterior">&#8249;</button>
+      <div class="day-info">
+        <h1 id="day-title">Hoy</h1>
+        <p id="day-subtitle" class="muted"></p>
+      </div>
+      <button type="button" class="icon-btn" id="next-day" aria-label="Día siguiente">&#8250;</button>
+    </header>
+    <div class="today-row">
+      <button type="button" class="link-btn" id="go-today">Hoy</button>
+    </div>
+
+    <section class="progress" aria-label="Progreso del día">
+      <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="progress-bar">
+        <div class="progress-fill" id="progress-fill"></div>
+      </div>
+      <p class="progress-text" id="progress-text">Sin tareas</p>
+    </section>
+
+    <form id="add-form" class="add-form" autocomplete="off">
+      <label for="new-task" class="visually-hidden">Nueva tarea</label>
+      <input id="new-task" type="text" placeholder="¿Qué tienes que hacer?" maxlength="200">
+      <button type="submit">Añadir</button>
+    </form>
+
+    <ul id="task-list" class="task-list" aria-label="Tareas del día"></ul>
+    <p id="empty-msg" class="empty muted" hidden>No hay tareas para este día.</p>
+
+    <section id="pending" class="pending" hidden>
+      <div class="pending-header">
+        <h2>Pendientes de días anteriores</h2>
+        <button type="button" class="small-btn" id="move-all">Pasar todas a hoy</button>
+      </div>
+      <ul id="pending-list" class="task-list"></ul>
+    </section>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>
