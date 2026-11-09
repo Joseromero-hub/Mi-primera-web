@@ -217,3 +217,13 @@ input { font: inherit; }
   white-space: nowrap;
 }
 .small-btn:hover { background: var(--accent-soft); }
+
+/* Copia de seguridad */
+.backup {
+  margin-top: 40px;
+  padding-top: 12px;
+  border-top: 1px solid var(--border);
+  text-align: center;
+}
+.backup .link-btn { font-weight: 500; font-size: .9rem; }
+.backup-msg { margin: 6px 0 0; font-size: .85rem; min-height: 1.2em; }

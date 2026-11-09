@@ -83,7 +83,11 @@
     progressText: $('progress-text'),
     pending: $('pending'),
     pendingList: $('pending-list'),
-    moveAll: $('move-all')
+    moveAll: $('move-all'),
+    exportBtn: $('export-btn'),
+    importBtn: $('import-btn'),
+    importFile: $('import-file'),
+    backupMsg: $('backup-msg')
   };
 
   // ---------- Render ----------
@@ -281,6 +285,99 @@
     pendingTasks(t).forEach(function (task) { task.date = t; });
     save();
     render();
+  });
+
+  // ---------- Exportar / importar ----------
+  function showBackupMsg(text) {
+    els.backupMsg.textContent = text;
+  }
+
+  els.exportBtn.addEventListener('click', function () {
+    var data = { app: 'tareas-diarias', version: 1, exportedAt: new Date().toISOString(), tasks: tasks };
+    var blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement('a');
+    a.href = url;
+    a.download = 'tareas-' + todayKey() + '.json';
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    setTimeout(function () { URL.revokeObjectURL(url); }, 1000);
+    showBackupMsg('Exportadas ' + tasks.length + ' tareas.');
+  });
+
+  els.importBtn.addEventListener('click', function () {
+    els.importFile.value = '';
+    els.importFile.click();
+  });
+
+  var DATE_RE = /^\d{4}-\d{2}-\d{2}$/;
+  function cleanTask(x) {
+    if (!x || typeof x.text !== 'string' || !x.text.trim() || typeof x.date !== 'string' || !DATE_RE.test(x.date)) {
+      return null;
+    }
+    return {
+      id: typeof x.id === 'string' && x.id ? x.id : newId(),
+      text: x.text.trim().slice(0, 200),
+      done: x.done === true,
+      date: x.date,
+      createdAt: typeof x.createdAt === 'number' ? x.createdAt : Date.now()
+    };
+  }
+
+  els.importFile.addEventListener('change', function () {
+    var file = els.importFile.files && els.importFile.files[0];
+    if (!file) return;
+    var reader = new FileReader();
+    reader.onload = function () {
+      var parsed;
+      try {
+        parsed = JSON.parse(reader.result);
+      } catch (e) {
+        showBackupMsg('El archivo no es un JSON válido.');
+        return;
+      }
+      var list = Array.isArray(parsed) ? parsed : parsed && parsed.tasks;
+      if (!Array.isArray(list)) {
+        showBackupMsg('El archivo no contiene tareas.');
+        return;
+      }
+      var incoming = list.map(cleanTask).filter(Boolean);
+      var skipped = list.length - incoming.length;
+      if (!incoming.length) {
+        showBackupMsg('No se encontró ninguna tarea válida en el archivo.');
+        return;
+      }
+
+      var replace = tasks.length > 0 && confirm(
+        'Se van a importar ' + incoming.length + ' tareas.\n\n' +
+        'Aceptar: REEMPLAZAR todas tus tareas actuales.\n' +
+        'Cancelar: COMBINAR con las actuales (sin duplicados).'
+      );
+
+      var added = 0, updated = 0;
+      if (replace) {
+        tasks = incoming;
+        added = incoming.length;
+      } else {
+        var byId = {};
+        tasks.forEach(function (t, i) { byId[t.id] = i; });
+        incoming.forEach(function (t) {
+          if (byId.hasOwnProperty(t.id)) { tasks[byId[t.id]] = t; updated++; }
+          else { byId[t.id] = tasks.length; tasks.push(t); added++; }
+        });
+      }
+      save();
+      editingId = null;
+      render();
+      var msg = replace
+        ? 'Tareas reemplazadas: ' + added + '.'
+        : 'Importadas: ' + added + ' nuevas, ' + updated + ' actualizadas.';
+      if (skipped) msg += ' Ignoradas ' + skipped + ' no válidas.';
+      showBackupMsg(msg);
+    };
+    reader.onerror = function () { showBackupMsg('No se pudo leer el archivo.'); };
+    reader.readAsText(file);
   });
 
   // Si la pestaña queda abierta y cambia el día, refresca títulos y pendientes
